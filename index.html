@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead CRM Workspace</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h1>Lead CRM</h1>
+      <p class="muted">Local workspace for lead ops</p>
+
+      <div class="filter-group">
+        <label>Search</label>
+        <input id="searchInput" type="text" placeholder="Business, handle, city" />
+      </div>
+
+      <div class="filter-group">
+        <label>Status</label>
+        <select id="statusFilter">
+          <option value="">All</option>
+          <option value="new">New</option>
+          <option value="reviewed">Reviewed</option>
+          <option value="ready">Ready to Contact</option>
+          <option value="contacted">Contacted</option>
+          <option value="replied">Replied</option>
+          <option value="qualified">Qualified</option>
+          <option value="closed">Closed / Not Now</option>
+          <option value="archived">Archived / Bad Fit</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>City</label>
+        <select id="cityFilter"><option value="">All</option></select>
+      </div>
+
+      <div class="filter-group">
+        <label>Category</label>
+        <select id="categoryFilter"><option value="">All</option></select>
+      </div>
+
+      <div class="filter-group checkboxes">
+        <label><input type="checkbox" id="onlyWithPhone" /> Has phone</label>
+        <label><input type="checkbox" id="onlyWithEmail" /> Has email</label>
+        <label><input type="checkbox" id="onlyWithBooking" /> Has booking/website</label>
+        <label><input type="checkbox" id="onlyUnworked" /> Unworked only</label>
+      </div>
+
+      <div class="stats" id="stats"></div>
+    </aside>
+
+    <main class="main">
+      <section class="toolbar">
+        <div>
+          <button class="tab active" data-view="list">List</button>
+          <button class="tab" data-view="pipeline">Pipeline</button>
+        </div>
+        <div class="toolbar-actions">
+          <button id="exportCrmStateBtn">Export CRM State</button>
+        </div>
+      </section>
+
+      <section id="listView" class="view active">
+        <div class="list-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Lead</th>
+                <th>City</th>
+                <th>Category</th>
+                <th>Fit</th>
+                <th>QA</th>
+                <th>Status</th>
+                <th>Links</th>
+              </tr>
+            </thead>
+            <tbody id="leadRows"></tbody>
+          </table>
+        </div>
+        <div class="detail-panel" id="detailPanel">
+          <div class="empty-state">Select a lead</div>
+        </div>
+      </section>
+
+      <section id="pipelineView" class="view">
+        <div id="pipelineBoard" class="pipeline-board"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
